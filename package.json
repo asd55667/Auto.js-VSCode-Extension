@@ -40,6 +40,16 @@
           "when": "resourceLangId == javascript",
           "command": "extension.run",
           "group": "navigation@1"
+        },
+        {
+          "when": "resourceLangId == typescript",
+          "command": "extension.openDocument",
+          "group": "navigation@2"
+        },
+        {
+          "when": "resourceLangId == typescript",
+          "command": "extension.run",
+          "group": "navigation@1"
         }
       ],
       "explorer/context": [

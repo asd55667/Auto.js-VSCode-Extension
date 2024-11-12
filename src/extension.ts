@@ -302,8 +302,13 @@ class Extension {
       filename = uri.fsPath;
       console.log("fileName-->", filename);
       try {
-        text = fs.readFileSync(filename, 'utf8');
+        const root = vscode.workspace.workspaceFolders[0].uri.fsPath
+        const project = JSON.parse(fs.readFileSync(path.join(root, "project.json"), 'utf-8'));
+        const bundlePath = path.join(root, project?.main);
+        vscode.window.showInformationMessage(`running at ${bundlePath}`);
+        text = fs.readFileSync(bundlePath, 'utf8');
       } catch (error) {
+        vscode.window.showErrorMessage('fail to run');
         console.error(error);
       }
     } else {
